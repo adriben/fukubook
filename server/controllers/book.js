@@ -1,10 +1,14 @@
 const Book = require('../models/Book');
 
 exports.createBook = (req, res, next) => {
-    console.log('bonjour');
-    const bookObject = JSON.parse(req.body.book);
+    console.log(req.body);
+    const bookObject = req.body;
     const book = new Book({
-        ...bookObject,
+        userId: req.body.userId,
+        title: req.body.title,
+        author: req.body.Author,
+        description: req.body.description
+
 
     })
      book.save()
