@@ -7,11 +7,18 @@
     
 
         <h1 class="pt-4 text-center">
-         Exchange, sell or give your foreign books in Fukuoka
+         Exchange, sell or give your books in Fukuoka
          
         </h1>
         
       </div>
+    </section>
+    <section class="container text-center mt-5" >
+      <h2>Latest arrival</h2>
+
+
+
+
     </section>
   </div>
 </template>
@@ -19,12 +26,12 @@
 <style lang="scss">
 .hero {
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
     url("../assets/books.jpg");
-  background-position: bottom;
+  background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
+  height: 600px;
   width: 100%;
   position: relative;
 
@@ -42,9 +49,7 @@
     
   }
 }
-.banner {
-  height: 700px;
-}
+
 </style>
 
 <script>

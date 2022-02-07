@@ -73,7 +73,7 @@ header {
     margin-right: 0;
   }
   li {
-    padding-left: 2rem;
+    padding-left: .7rem;
   }
   .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
