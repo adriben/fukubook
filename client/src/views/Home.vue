@@ -3,43 +3,37 @@
     <TheHeader></TheHeader>
     <section class="banniere col-12 hero">
       <div class="hero-text">
-      
-    
-
         <h1 class="pt-4 text-center">
-         Exchange, sell or give your books in Fukuoka
-         
+          Exchange, sell or give your books in Fukuoka
         </h1>
-        
       </div>
     </section>
-    <section class="container text-center mt-5" >
+    <section class="container text-center mt-5">
       <h2>Latest arrival</h2>
 
       <ul>
-        <li v-for="book in this.books" :key="book.title"> 
+        <li v-for="book in this.books" :key="book.title">
+          
+          <div>
+      <div class="card mt-3 container mb-3">
+        <img src="../assets/noImage.png" alt="book image" class="bookImage">
 
-        <div class="card">
-  <div class="card-header">
-  From {{ book.userName}}
-  </div>
-  <div class="card-img">
-    <img src="" alt="">
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ book.title}} ({{book.author}})</h5>
-    <p class="card-text">{{ book.description}}</p>
-    <a href="#" class="btn btn-danger">Contact seller</a>
-  </div>
-</div>
+        <div class="card-body mt-0">
+          <div class="card-title">
+            <h3>{{book.title }}</h3>
+            <h4>( {{ book.author }})</h4>
+          </div>
+          <p class="card-text mt-5">
+            {{ book.description}} 
+          </p>
+          <div>
 
-
+          </div>
+        </div>
+      </div>
+      </div>
         </li>
       </ul>
-
-   
-
-
     </section>
   </div>
 </template>
@@ -67,44 +61,51 @@
     @media screen and (max-width: 560px) {
       left: 1px;
     }
-    
   }
+
+ 
+  
 }
 
+ .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid grey;
+}
+
+.bookImage{
+    height: 300px;
+  }
 </style>
 
 <script>
 // @ is an alias to /src
-import TheHeader from '@/components/TheHeader.vue'
+import TheHeader from "@/components/TheHeader.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    TheHeader
+    TheHeader,
   },
   data() {
     return {
       books: [],
-    }
+    };
   },
-   mounted: async function () {
+  mounted: async function () {
     this.getBooks();
-    
   },
   methods: {
     getBooks: async function () {
-      await fetch('http://localhost:5000/api/books')
-      .then((responsehttp) => {
-        return responsehttp.json();
-      })
-      .then((data) => {
-        this.books = data
-        
-      })
-    }
-  }
-
-}
+      await fetch("http://localhost:5000/api/books")
+        .then((responsehttp) => {
+          return responsehttp.json();
+        })
+        .then((data) => {
+          this.books = data;
+        });
+    },
+  },
+};
 </script>
-
-
