@@ -21,7 +21,7 @@
 
         <div class="card">
   <div class="card-header">
-   {{ book.title}}
+  From {{ book.userName}}
   </div>
   <div class="card-img">
     <img src="" alt="">

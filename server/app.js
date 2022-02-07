@@ -1,9 +1,11 @@
 const express = require('express');
 const helmet = require('helmet')
 const cors = require('cors')
+const path = require('path');
 const mongoose = require('mongoose')
 const dotenv = require ('dotenv')
-const bookRoutes = require('./routes/book')
+const bookRoutes = require('./routes/book');
+const userRoutes = require('./routes/user');
 const app = express();
 
 
@@ -12,8 +14,10 @@ dotenv.config()
 app.use(helmet());
 app.use(cors());
 
+app.use('/images', express.static(path.join(__dirname, 'images'))); //path to the folder where to stock files entering the application
 
 app.use(express.json());
+app.use('/api/auth', userRoutes);
 app.use('/api/books', bookRoutes)
 
 //connection to the Mongodb database
