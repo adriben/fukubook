@@ -16,7 +16,28 @@
     <section class="container text-center mt-5" >
       <h2>Latest arrival</h2>
 
+      <ul>
+        <li v-for="book in this.books" :key="book.title"> 
 
+        <div class="card">
+  <div class="card-header">
+   {{ book.title}}
+  </div>
+  <div class="card-img">
+    <img src="" alt="">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ book.title}} ({{book.author}})</h5>
+    <p class="card-text">{{ book.description}}</p>
+    <a href="#" class="btn btn-danger">Contact seller</a>
+  </div>
+</div>
+
+
+        </li>
+      </ul>
+
+   
 
 
     </section>
@@ -60,7 +81,29 @@ export default {
   name: 'Home',
   components: {
     TheHeader
+  },
+  data() {
+    return {
+      books: [],
+    }
+  },
+   mounted: async function () {
+    this.getBooks();
+    
+  },
+  methods: {
+    getBooks: async function () {
+      await fetch('http://localhost:5000/api/books')
+      .then((responsehttp) => {
+        return responsehttp.json();
+      })
+      .then((data) => {
+        this.books = data
+        
+      })
+    }
   }
+
 }
 </script>
 

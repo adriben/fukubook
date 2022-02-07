@@ -5,8 +5,10 @@ exports.createBook = (req, res, next) => {
   const bookObject = req.body;
   const book = new Book({
     userId: req.body.userId,
+    username: req.body.userName,
     title: req.body.title,
-    author: req.body.Author,
+    author: req.body.author,
+    lang: req.body.lang,
     description: req.body.description,
   });
   book
