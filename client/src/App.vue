@@ -1,30 +1,41 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <!-- <div v-if="isLoading" class="loader">
+  <Circle8 class="spin"></Circle8>
+    </div> -->
+
+  <router-view />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+// import {Circle8} from 'vue-loading-spinner';
+
+export default {
+  name: "app",
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+  components: {
+    //  "Circle8": Circle8
+  },
+  mounted() {
+    window.addEventListener("load", async () => {
+      this.isLoading = false;
+    });
+  },
+};
+</script>
+
+<style lang="scss">
+* {
+  margin: auto;
+  max-width: 1900px;
 }
 
-#nav {
-  padding: 30px;
+.btn {
+  border-radius: 20px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
