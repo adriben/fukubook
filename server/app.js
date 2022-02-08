@@ -25,7 +25,7 @@ mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD
 { useNewUrlParser: true,
     useUnifiedTopology: true })
     .then(()=> console.log('successfuly connected to Mongodb'))
-    .catch(err => console.log('fail to connect to mongodb'))
+    .catch(err => console.log(err))
 
 
 

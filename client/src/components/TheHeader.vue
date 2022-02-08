@@ -3,13 +3,14 @@
     <div class="">
       <div>
         <nav class="navbar navbar-expand-lg navbar-">
-          
-          <p class="navbar-brand">
-            
-            <i class="fas fa-book"></i>
+          <router-link to="/">
+            <p class="navbar-brand">
+              <i class="fas fa-book"></i>
 
-Books of Fukuoka
-          </p>
+              Books of Fukuoka
+            </p>
+          </router-link>
+
           <button
             class="navbar-toggler"
             type="button"
@@ -23,10 +24,12 @@ Books of Fukuoka
           </button>
           <div id="navbarContent" class="collapse navbar-collapse">
             <ul class="navbar-nav">
-              <li><button class="btn btn-success">Sign-in</button> </li>
-              <li><button class="btn btn-primary">Join the community</button> </li>
-             
-            
+              <router-link to="/signIn">
+                <li><button class="btn btn-success">Sign-in</button></li>
+              </router-link>
+              <li>
+                <button class="btn btn-primary">Join the community</button>
+              </li>
             </ul>
           </div>
         </nav>
@@ -56,15 +59,15 @@ export default {
 <style lang="scss">
 header {
   font-size: 130%;
-  position: fixed;
   z-index: 4;
   width: 100%;
 
   a {
-    color: #ffff;
+    color: black;
     padding-left: 1rem;
     transition: 400ms;
     &:hover {
+      color: black;
       transform: scale(1.15);
       transition: 400ms;
     }
@@ -73,7 +76,7 @@ header {
     margin-right: 0;
   }
   li {
-    padding-left: .7rem;
+    padding-left: 0.7rem;
   }
   .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
