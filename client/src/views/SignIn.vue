@@ -42,7 +42,7 @@
           name="confirmePassword"
           id="confirmePassword"
         />
-        <button class="btn btn-success mt-3">Sign-up</button>
+        <button class="btn btn-success mt-3" @click="signIn">Sign-up</button>
       </form>
       <p class="errorMessage">{{ errorMessage }}</p>
       <router-link to="/" class="link"
@@ -62,6 +62,38 @@ export default {
     name: 'SignIn',
     components: {
         TheHeader
+    },
+    data() {
+        return{
+            email: '',
+            username: '',
+            password: '',
+            confirmedPassword: '',
+            errorMessage: '',
+        }
+    },
+    methods: {
+        signIn: async function(event){
+            event.preventDefault();
+            let validEmail = new RegExp(
+        /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+      if(!validEmail.test(this.email)){
+          this.errorMessage = "Please input a valid email address"
+      }else if(this.password.length < 5) {
+          this.errorMessage = 'The password must contain at least 5 characters'
+
+      } else if (this.username.length < 2) {
+        this.errorMessage = "The username must contain at leat 2 characters";
+      }else if (
+        this.username != "" &&
+        this.email != "" &&
+        this.password != "" &&
+        this.confirmedPassword === this.password
+      ){
+          console.log(this.username);
+      }
+        }
     }
 }
 </script>

@@ -18,7 +18,7 @@ exports.createBook = (req, res, next) => {
 };
 
 exports.getAllBooks = (req, res, next) => {
-    Book.find()
-    .then(book => res.status(200).json(book))
-    .catch(err => res.status(400).json({ message: err}))
-}
+  Book.find()
+    .then((book) => res.status(200).json(book))
+    .catch((err) => res.status(400).json({ message: err }));
+};
