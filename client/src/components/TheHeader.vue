@@ -29,16 +29,17 @@
               </router-link>
               <li>
                 <router-link to="/login">
-                <button class="btn btn-primary">Join the community</button>
+                  <button class="btn btn-primary">Join the community</button>
                 </router-link>
               </li>
             </ul>
-            <ul v-else>
+            <ul v-else class="loggedIn">
+              <li class="pr-3">Welcome {{ this.$store.state.user.username }}</li>
               <li>
-                hello {{ this.$store.state.user.username }}
+                <router-link to="/addBook">
+                  <button class="btn btn-danger">+ Add your book</button>
+                </router-link>
               </li>
-              
-
             </ul>
           </div>
         </nav>
@@ -83,12 +84,16 @@ header {
   }
   ul {
     margin-right: 0;
+    
   }
   li {
     padding-left: 0.7rem;
   }
   .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
+  }
+  .loggedIn{
+    display: flex;
   }
 }
 </style>

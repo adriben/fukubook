@@ -49,15 +49,14 @@ export default {
     };
   },
   methods: {
-      logIn: async function(event) {
-          event.preventDefault();
-          this.$store.dispatch('logIn', {
-             email: this.email,
-             password: this.password
-          })
-          
-      }
-  }
+    logIn: async function (event) {
+      event.preventDefault();
+      this.$store.dispatch("logIn", {
+        email: this.email,
+        password: this.password,
+      });
+    },
+  },
 };
 </script>
 

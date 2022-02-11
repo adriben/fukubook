@@ -13,25 +13,26 @@
 
       <ul>
         <li v-for="book in this.books" :key="book.title">
-          
           <div>
-      <div class="card mt-3 container mb-3">
-        <img src="../assets/noImage.png" alt="book image" class="bookImage">
+            <div class="card mt-3 container mb-3">
+              <img
+                src="../assets/noImage.png"
+                alt="book image"
+                class="bookImage"
+              />
 
-        <div class="card-body mt-0">
-          <div class="card-title">
-            <h3>{{book.title }}</h3>
-            <h4>( {{ book.author }})</h4>
+              <div class="card-body mt-0">
+                <div class="card-title">
+                  <h3>{{ book.title }}</h3>
+                  <h4>( {{ book.author }})</h4>
+                </div>
+                <p class="card-text mt-5">
+                  {{ book.description }}
+                </p>
+                <div></div>
+              </div>
+            </div>
           </div>
-          <p class="card-text mt-5">
-            {{ book.description}} 
-          </p>
-          <div>
-
-          </div>
-        </div>
-      </div>
-      </div>
         </li>
       </ul>
     </section>
@@ -62,21 +63,18 @@
       left: 1px;
     }
   }
-
- 
-  
 }
 
- .card {
+.card {
   display: flex;
   flex-direction: row;
   align-items: center;
   border: 1px solid grey;
 }
 
-.bookImage{
-    height: 300px;
-  }
+.bookImage {
+  height: 300px;
+}
 </style>
 
 <script>

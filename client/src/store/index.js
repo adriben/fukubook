@@ -29,8 +29,8 @@ export default createStore({
     status: "",
     user: {
       userId: -1,
-      username: '',
-      token: '',
+      username: "",
+      token: "",
     },
   },
   mutations: {
@@ -48,21 +48,24 @@ export default createStore({
   actions: {
     createAccount: async ({ commit }, userInfos) => {
       commit;
-      instance.post("http://localhost:5000/api/auth/signup", userInfos).then((response) => {
-        console.log(response);
-      });
+      instance
+        .post("http://localhost:5000/api/auth/signup", userInfos)
+        .then((response) => {
+          console.log(response);
+        });
     },
-    logIn: async({ commit }, userInfos) => {
+    logIn: async ({ commit }, userInfos) => {
       commit;
-      instance.post("http://localhost:5000/api/auth/login", userInfos)
-      .then((response) => {
-        console.log(response.data);
-        commit("logUser", response.data)
-        
-      }).then(()=> {
-        // user = JSON.parse(localStorage.getItem('user'))
-      })
-    }
+      instance
+        .post("http://localhost:5000/api/auth/login", userInfos)
+        .then((response) => {
+          console.log(response.data);
+          commit("logUser", response.data);
+        })
+        .then(() => {
+          // user = JSON.parse(localStorage.getItem('user'))
+        });
+    },
   },
 
   modules: {},

@@ -86,12 +86,11 @@ export default {
         this.confirmedPassword === this.password
       ) {
         console.log(this.username);
-        this.$store
-        .dispatch("createAccount", {
+        this.$store.dispatch("createAccount", {
           email: this.email,
           username: this.username,
-          password: this.password
-        })
+          password: this.password,
+        });
       }
     },
   },
