@@ -6,39 +6,43 @@ const instance = axios.create({
   baseUrl: "http://localhost:5000/api",
 });
 
-let user = -1;
-if (!user) {
-  //if there is nothing in local storage then the default userID is -1
-  user = {
-    userId: -1,
-    token: "",
-  };
-} else {
-  try {
-    instance.defaults.headers.common["Authorization"] = user.accessToken;
-  } catch (ex) {
-    user = {
-      userId: -1,
-      token: "",
-    };
-  }
-}
+// let user = JSON.parse(localStorage.getItem('user'));
+// if (!user) {
+//   //if there is nothing in local storage then the default userID is -1
+//   user = {
+//     userId: -1,
+//     token: "",
+//   };
+// } else {
+//   try {
+//     instance.defaults.headers.common["Authorization"] = user.token;
+//   } catch (ex) {
+//     user = {
+//       userId: -1,
+//       token: "",
+//     };
+//   }
+// }
 
 export default createStore({
   state: {
     status: "",
     user: {
-      userId: user.id,
-      username: user.username,
-      token: user.token,
+      userId: -1,
+      username: '',
+      token: '',
     },
   },
   mutations: {
     logUser: async function (state, user) {
-      state.user = {};
-      state.user.userId = user.id;
+      // instance.defaults.headers.common["Authorization"] = user.token;
+      // localStorage.setItem("user", JSON.stringify(user))
+
+      state.user.userId = user.userId;
       state.user.username = user.username;
       state.user.token = user.token;
+
+      console.log(state.user);
     },
   },
   actions: {
@@ -54,7 +58,9 @@ export default createStore({
       .then((response) => {
         console.log(response.data);
         commit("logUser", response.data)
-        console.log(user);
+        
+      }).then(()=> {
+        // user = JSON.parse(localStorage.getItem('user'))
       })
     }
   },

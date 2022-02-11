@@ -23,7 +23,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div id="navbarContent" class="collapse navbar-collapse">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" v-if="this.$store.state.user.userId == -1">
               <router-link to="/signIn">
                 <li><button class="btn btn-success">Sign-in</button></li>
               </router-link>
@@ -32,6 +32,13 @@
                 <button class="btn btn-primary">Join the community</button>
                 </router-link>
               </li>
+            </ul>
+            <ul v-else>
+              <li>
+                hello {{ this.$store.state.user.username }}
+              </li>
+              
+
             </ul>
           </div>
         </nav>
