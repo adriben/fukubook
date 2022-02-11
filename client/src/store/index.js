@@ -30,7 +30,7 @@ export default createStore({
     user: {
       userId: user.id,
       username: user.username,
-      token: user.accessToken,
+      token: user.token,
     },
   },
   mutations: {
@@ -38,6 +38,7 @@ export default createStore({
       state.user = {};
       state.user.userId = user.id;
       state.user.username = user.username;
+      state.user.token = user.token;
     },
   },
   actions: {
@@ -49,8 +50,11 @@ export default createStore({
     },
     logIn: async({ commit }, userInfos) => {
       commit;
-      instance.post("http://localhost:5000/api/auth/login", userInfos).then((response) => {
-        console.log(response);
+      instance.post("http://localhost:5000/api/auth/login", userInfos)
+      .then((response) => {
+        console.log(response.data);
+        commit("logUser", response.data)
+        console.log(user);
       })
     }
   },
