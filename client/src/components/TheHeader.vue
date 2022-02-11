@@ -24,11 +24,11 @@
           </button>
           <div id="navbarContent" class="collapse navbar-collapse">
             <ul class="navbar-nav" v-if="this.$store.state.user.userId == -1">
-              <router-link to="/signIn">
-                <li><button class="btn btn-success">Sign-in</button></li>
+              <router-link to="/login">
+                <li><button class="btn btn-success">Login</button></li>
               </router-link>
               <li>
-                <router-link to="/login">
+                <router-link to="/signIn">
                   <button class="btn btn-primary">Join the community</button>
                 </router-link>
               </li>

@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-// import router from '../router/index';
+import router from '../router/index';
 
 const axios = require("axios");
 const instance = axios.create({
@@ -63,6 +63,7 @@ export default createStore({
           commit("logUser", response.data);
         })
         .then(() => {
+          router.push('/')
           // user = JSON.parse(localStorage.getItem('user'))
         });
     },
