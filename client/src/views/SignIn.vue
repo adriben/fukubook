@@ -42,7 +42,7 @@
           <button class="btn btn-success mt-3" @click="signIn">Sign-up</button>
         </form>
         <p class="errorMessage">{{ errorMessage }}</p>
-        <router-link to="/" class="link"
+        <router-link to="/login" class="link"
           >Already an account? Click here to login
         </router-link>
       </div>

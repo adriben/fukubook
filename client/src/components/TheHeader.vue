@@ -28,7 +28,9 @@
                 <li><button class="btn btn-success">Sign-in</button></li>
               </router-link>
               <li>
+                <router-link to="/login">
                 <button class="btn btn-primary">Join the community</button>
+                </router-link>
               </li>
             </ul>
           </div>

@@ -47,6 +47,13 @@ export default createStore({
         console.log(response);
       });
     },
+    logIn: async({ commit }, userInfos) => {
+      commit;
+      instance.post("http://localhost:5000/api/auth/login", userInfos).then((response) => {
+        console.log(response);
+      })
+    }
   },
+
   modules: {},
 });
