@@ -2,37 +2,48 @@
   <div>
     <TheHeader />
     <div>
-        <form action="" class="form">
-            <label for="title">Book's title</label>
-          <input
-            type="text"
-            placeholder="Title"
-            v-model="title"
-            name="title"
-            id="title"
-            required
-          />
-          <label for="author">Book's author</label>
-          <input
-            type="text"
-            placeholder="author"
-            v-model="author"
-            name="author"
-            id="author"
-            required
-          />
-          <label for="author">Book's author</label>
-          <textarea
+      <h1 class="text-center p-5">Edit your article</h1>
+      <form action="" class="form">
+        <label for="title">Book's title</label>
+        <input
+          type="text"
+          placeholder="Title"
+          v-model="title"
+          name="title"
+          id="title"
+          required
+        />
+        <label for="author">Book's author</label>
+        <input
+          type="text"
+          placeholder="author"
+          v-model="author"
+          name="author"
+          id="author"
+          required
+        />
+        <label for="author">Book's description</label>
+        <textarea
           rows="7"
           cols="45"
-            placeholder="description"
-            v-model="description"
-            name="description"
-            id="description"
-            required
-          />
-          
-        </form>
+          placeholder="description"
+          v-model="description"
+          name="description"
+          id="description"
+          required
+        />
+        <div class="container text-center radio">
+          <p>Please select your option</p>
+          <input type="radio" id="give" name="option" value="Give" />
+          <label for="give" class="pr-2">Give</label>
+          <input type="radio" id="exchange" name="option" value="Exchange" />
+          <label for="Exchange" class="pr-2">Exchange</label>
+          <input type="radio" id="sell" name="option" value="Sell" />
+          <label for="sell" class="pr-2">Sell</label>
+        </div>
+
+        <button class="btn btn-success mt-2" @click="addBook">Add this book</button>
+      </form>
     </div>
   </div>
 </template>
@@ -45,24 +56,36 @@ export default {
   components: {
     TheHeader,
   },
-  data (){
-      return {
-        title: '',
-        author: "",
-        description: ""
-      }
+  data() {
+    return {
+      title: "",
+      author: "",
+      description: "",
+      option: "",
+      userId: this.$store.state.user.userId
+    };
+  },
+  methods: {
+    addBook: async function (event) {
+      event.preventDefault();
+      this.$store.dispatch("createBook", {
+        title: this.title,
+        author: this.author,
+        description: this.description,
+        option: this.option,
+        userId: this.userId
+      });
   }
-}
+  }
+};
 </script>
 <style lang="scss">
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    input{
-        width: 20rem;
-    }
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 </style>
+
+

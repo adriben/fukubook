@@ -67,6 +67,13 @@ export default createStore({
           // user = JSON.parse(localStorage.getItem('user'))
         });
     },
+     createBook: async ({ commit }, bookInfos) => {
+       commit;
+       instance.post("http://localhost:5000/api/books", bookInfos)
+       .then((response) => {
+         console.log(response);
+       })
+     }
   },
 
   modules: {},
