@@ -7,6 +7,7 @@ const bookSchema = mongoose.Schema({
   author: { type: String, require: true },
   lang: { type: String, require: true },
   description: { type: String, require: true },
+  option: { type: String, require: true },
 });
 
 module.exports = mongoose.model("Book", bookSchema);

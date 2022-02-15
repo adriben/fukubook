@@ -12,7 +12,7 @@
       <h2>Latest arrival</h2>
 
       <ul>
-        <li v-for="book in this.books" :key="book.title">
+        <li v-for="book in this.books.slice().reverse()" :key="book.title">
           <div>
             <div class="card mt-3 container mb-3">
               <img

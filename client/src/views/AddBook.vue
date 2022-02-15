@@ -34,7 +34,13 @@
         />
         <div class="container text-center radio">
           <p>Please select your option</p>
-          <input type="radio" id="give" name="option" value="Give" />
+          <input
+            type="radio"
+            id="give"
+            name="option"
+            value="Give"
+            v-model="option"
+          />
           <label for="give" class="pr-2">Give</label>
           <input type="radio" id="exchange" name="option" value="Exchange" />
           <label for="Exchange" class="pr-2">Exchange</label>
@@ -42,7 +48,9 @@
           <label for="sell" class="pr-2">Sell</label>
         </div>
 
-        <button class="btn btn-success mt-2" @click="addBook">Add this book</button>
+        <button class="btn btn-success mt-2" @click="addBook">
+          Add this book
+        </button>
       </form>
     </div>
   </div>
@@ -62,21 +70,22 @@ export default {
       author: "",
       description: "",
       option: "",
-      userId: this.$store.state.user.userId
+      userId: this.$store.state.user.userId,
     };
   },
   methods: {
     addBook: async function (event) {
       event.preventDefault();
+      console.log(this.option);
       this.$store.dispatch("createBook", {
         title: this.title,
         author: this.author,
         description: this.description,
         option: this.option,
-        userId: this.userId
+        userId: this.userId,
       });
-  }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -87,5 +96,3 @@ export default {
   align-items: center;
 }
 </style>
-
-

@@ -70,8 +70,8 @@ export default createStore({
      createBook: async ({ commit }, bookInfos) => {
        commit;
        instance.post("http://localhost:5000/api/books", bookInfos)
-       .then((response) => {
-         console.log(response);
+       .then(() => {
+        router.push("/");
        })
      }
   },
