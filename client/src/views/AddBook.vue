@@ -42,11 +42,34 @@
             v-model="option"
           />
           <label for="give" class="pr-2">Give</label>
-          <input type="radio" id="exchange" name="option" value="Exchange" />
+          <input
+            type="radio"
+            id="exchange"
+            name="option"
+            value="Exchange"
+            v-model="option"
+          />
           <label for="Exchange" class="pr-2">Exchange</label>
-          <input type="radio" id="sell" name="option" value="Sell" />
+          <input
+            type="radio"
+            id="sell"
+            name="option"
+            value="Sell"
+            v-model="option"
+          />
           <label for="sell" class="pr-2">Sell</label>
         </div>
+        <label for="pet-select">Choose a language:</label>
+
+        <select name="lang" id="lang-select" v-model="lang">
+          <option value="">--Please choose a language--</option>
+          <option value="English">English</option>
+          <option value="French">French</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Portuguese">Portuguese</option>
+          <option value="Other">Other</option>
+        </select>
 
         <button class="btn btn-success mt-2" @click="addBook">
           Add this book
@@ -71,6 +94,7 @@ export default {
       description: "",
       option: "",
       userId: this.$store.state.user.userId,
+      lang: "",
     };
   },
   methods: {
@@ -83,6 +107,7 @@ export default {
         description: this.description,
         option: this.option,
         userId: this.userId,
+        lang: this.lang,
       });
     },
   },

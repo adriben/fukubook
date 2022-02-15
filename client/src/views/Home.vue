@@ -29,7 +29,12 @@
                 <p class="card-text mt-5">
                   {{ book.description }}
                 </p>
-                <div></div>
+                <div>
+                  {{ book.option }}
+                </div>
+                <div>
+                  {{ book.lang }}
+                </div>
               </div>
             </div>
           </div>
