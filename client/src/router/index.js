@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import SignIn from "../views/SignIn.vue";
 import Login from "../views/Login.vue";
 import AddBook from "../views/AddBook.vue";
+import Modification from "../views/Modification.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/addBook",
     name: "AddBook",
     component: AddBook,
+  },
+  {
+    path: "/modif",
+    name: "Modification",
+    component: Modification,
   },
 ];
 

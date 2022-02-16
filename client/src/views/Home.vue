@@ -35,6 +35,16 @@
                 <div>
                   {{ book.lang }}
                 </div>
+                <div>
+                  <router-link to="/modif">
+                    <button
+                      class="btn btn-primary"
+                      v-if="this.$store.state.user.userId === book.userId"
+                    >
+                      Modify
+                    </button>
+                  </router-link>
+                </div>
               </div>
             </div>
           </div>
