@@ -27,7 +27,7 @@ const routes = [
     component: AddBook,
   },
   {
-    path: "/modif",
+    path: "/modif/:bookId",
     name: "Modification",
     component: Modification,
   },

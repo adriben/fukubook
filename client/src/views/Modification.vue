@@ -8,16 +8,16 @@
         <input
           type="text"
           placeholder="Title"
-          v-model="title"
           name="title"
           id="title"
+          :value="book.title"
           required
         />
         <label for="author">Book's author</label>
         <input
           type="text"
           placeholder="author"
-          v-model="author"
+          :value="book.author"
           name="author"
           id="author"
           required
@@ -27,7 +27,7 @@
           rows="7"
           cols="45"
           placeholder="description"
-          v-model="description"
+          :value="book.description"
           name="description"
           id="description"
           required
@@ -71,9 +71,9 @@
           <option value="Other">Other</option>
         </select>
 
-        <button class="btn btn-success mt-2" @click="addBook">
-          Add this book
-        </button>
+        <button class="btn btn-success mt-2">Add this book</button>
+        <br />
+        <button class="btn btn-danger mt-2">Delete</button>
       </form>
     </div>
   </div>
@@ -89,26 +89,27 @@ export default {
   },
   data() {
     return {
-      title: "",
-      author: "",
-      description: "",
-      option: "",
-      userId: this.$store.state.user.userId,
-      lang: "",
+      post: {},
     };
   },
+  mounted: async function () {
+    this.getBookInfo();
+  },
   methods: {
-    addBook: async function (event) {
-      event.preventDefault();
-      console.log(this.option);
-      this.$store.dispatch("createBook", {
-        title: this.title,
-        author: this.author,
-        description: this.description,
-        option: this.option,
-        userId: this.userId,
-        lang: this.lang,
-      });
+    getBookInfo: async function () {
+      return fetch(
+        `http://localhost:5000/api/books/${this.$route.params.bookId}`
+      )
+        .then((responsehttp) => {
+          return responsehttp.json();
+        })
+        .then((data) => {
+          this.book = data;
+          console.log(this.book.title);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

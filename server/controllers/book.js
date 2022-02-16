@@ -24,3 +24,9 @@ exports.getAllBooks = (req, res, next) => {
     .then((book) => res.status(200).json(book))
     .catch((err) => res.status(400).json({ message: err }));
 };
+
+exports.getOneBook = (req, res, next) => {
+  Book.findOne({ _id: req.params.id })
+    .then((book) => res.status(200).json(book))
+    .catch((err) => res.status(400).json({ err }));
+};

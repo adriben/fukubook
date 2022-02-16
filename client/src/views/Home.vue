@@ -36,7 +36,9 @@
                   {{ book.lang }}
                 </div>
                 <div>
-                  <router-link to="/modif">
+                  <router-link
+                    :to="{ name: 'Modification', params: { bookId: book._id } }"
+                  >
                     <button
                       class="btn btn-primary"
                       v-if="this.$store.state.user.userId === book.userId"
