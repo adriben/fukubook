@@ -34,11 +34,18 @@
               </li>
             </ul>
             <ul v-else class="loggedIn">
-              <li class="pr-3">Welcome {{ this.$store.state.user.username }}</li>
+              <li class="pr-3">
+                Welcome {{ this.$store.state.user.username }}
+              </li>
               <li>
                 <router-link to="/addBook">
                   <button class="btn btn-danger">+ Add your book</button>
                 </router-link>
+              </li>
+              <li>
+                <i class="fa-solid fa-right-from-bracket" @click="logout"
+                  >Hey</i
+                >
               </li>
             </ul>
           </div>
@@ -57,10 +64,9 @@ export default {
     };
   },
   methods: {
-    changeLang(e) {
-      this.eng = !this.eng;
+    logout(e) {
       e.preventDefault();
-      this.$parent.changeLang();
+      this.$store.dispatch("logout");
     },
   },
 };
@@ -84,7 +90,6 @@ header {
   }
   ul {
     margin-right: 0;
-    
   }
   li {
     padding-left: 0.7rem;
@@ -92,7 +97,7 @@ header {
   .navbar-expand-lg .navbar-collapse {
     justify-content: flex-end;
   }
-  .loggedIn{
+  .loggedIn {
     display: flex;
   }
 }

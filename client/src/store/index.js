@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import router from '../router/index';
+import router from "../router/index";
 
 const axios = require("axios");
 const instance = axios.create({
@@ -44,6 +44,11 @@ export default createStore({
 
       console.log(state.user);
     },
+    logout: async function (state) {
+      state.user.userId = -1;
+      state.user.username = "";
+      state.user.token = "";
+    },
   },
   actions: {
     createAccount: async ({ commit }, userInfos) => {
@@ -63,17 +68,21 @@ export default createStore({
           commit("logUser", response.data);
         })
         .then(() => {
-          router.push('/')
+          router.push("/");
           // user = JSON.parse(localStorage.getItem('user'))
         });
     },
-     createBook: async ({ commit }, bookInfos) => {
-       commit;
-       instance.post("http://localhost:5000/api/books", bookInfos)
-       .then(() => {
+    createBook: async ({ commit }, bookInfos) => {
+      commit;
+      instance.post("http://localhost:5000/api/books", bookInfos).then(() => {
         router.push("/");
-       })
-     }
+      });
+    },
+    logout: async ({ commit }) => {
+      commit("logout");
+
+      // user.userId = -1;
+    },
   },
 
   modules: {},

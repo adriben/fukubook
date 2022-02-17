@@ -73,7 +73,7 @@
 
         <button class="btn btn-success mt-2">Add this book</button>
         <br />
-        <button class="btn btn-danger mt-2">Delete</button>
+        <button class="btn btn-danger mt-2" >Delete</button>
       </form>
     </div>
   </div>
