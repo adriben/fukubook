@@ -73,7 +73,7 @@
 
         <button class="btn btn-success mt-2">Add this book</button>
         <br />
-        <button class="btn btn-danger mt-2" >Delete</button>
+        <button class="btn btn-danger mt-2" @click="deleteBook">Delete</button>
       </form>
     </div>
   </div>
@@ -89,7 +89,7 @@ export default {
   },
   data() {
     return {
-      post: {},
+      book: {},
     };
   },
   mounted: async function () {
@@ -110,6 +110,15 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    deleteBook: async function (e) {
+      e.preventDefault();
+      return fetch(
+        `http://localhost:5000/api/books/${this.$route.params.bookId}`,
+        {
+          method: "DELETE",
+        }
+      ).then(this.$router.push("/"));
     },
   },
 };
