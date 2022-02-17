@@ -80,8 +80,7 @@ export default createStore({
     },
     logout: async ({ commit }) => {
       commit("logout");
-
-      // user.userId = -1;
+      router.push("/");
     },
   },
 

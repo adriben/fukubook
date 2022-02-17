@@ -35,24 +35,27 @@
                 <div>
                   {{ book.lang }}
                 </div>
-                <div>
-                  <router-link
-                    :to="{ name: 'Modification', params: { bookId: book._id } }"
+              </div>
+              <div>
+                <router-link
+                  :to="{ name: 'Modification', params: { bookId: book._id } }"
+                >
+                  <button
+                    class="btn btn-primary modify"
+                    v-if="this.$store.state.user.userId === book.userId"
                   >
-                    <button
-                      class="btn btn-primary"
-                      v-if="this.$store.state.user.userId === book.userId"
-                    >
-                      Modify
-                    </button>
-                  </router-link>
-                </div>
+                    Update
+                  </button>
+                </router-link>
               </div>
             </div>
           </div>
         </li>
       </ul>
     </section>
+    <div class="pageButton container text-center">
+      <button class="btn btn-success">Next></button>
+    </div>
   </div>
 </template>
 
@@ -92,6 +95,10 @@
 .bookImage {
   height: 300px;
 }
+
+.modify {
+  margin-bottom: -15rem;
+}
 </style>
 
 <script>
@@ -106,10 +113,18 @@ export default {
   data() {
     return {
       books: [],
+      currentPage: 1,
+      bookPerPage: 2,
     };
   },
   mounted: async function () {
     this.getBooks();
+  },
+  computed: {
+    // paginatedBook() {
+    //   let page = 1;
+    //   return [].concat.apply([], this.books.map)
+    // }
   },
   methods: {
     getBooks: async function () {
