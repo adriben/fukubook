@@ -42,10 +42,8 @@
                   <button class="btn btn-danger">+ Add your book</button>
                 </router-link>
               </li>
-              <li>
-                <i class="fa-solid fa-right-from-bracket" @click="logout"
-                  >Hey</i
-                >
+              <li class="text-center">
+                <i class="fas fa-power-off mt-2 ml-3" @click="logout"></i>
               </li>
             </ul>
           </div>
@@ -99,6 +97,13 @@ header {
   }
   .loggedIn {
     display: flex;
+  }
+}
+.fa-power-off {
+  font-size: 1.8rem;
+  &:hover {
+    cursor: pointer;
+    color: red;
   }
 }
 </style>

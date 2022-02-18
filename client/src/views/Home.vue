@@ -55,6 +55,7 @@
     </section>
     <div class="pageButton container text-center">
       <button class="btn btn-success">Next></button>
+      <i class="fa-solid fa-right-from-bracket" @click="logout"></i>
     </div>
   </div>
 </template>
