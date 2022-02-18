@@ -10,7 +10,6 @@
     </section>
     <section class="container text-center mt-5">
       <h2>Latest arrival</h2>
-
       <ul>
         <li v-for="book in this.books.slice().reverse()" :key="book.title">
           <div>
@@ -30,6 +29,18 @@
                   {{ book.description }}
                 </p>
                 <div>
+                  <i
+                    class="fa-solid fa-gift fas"
+                    v-if="book.option == 'Give'"
+                  ></i>
+                  <i
+                    class="fa-solid fa-comment-dollar fas"
+                    v-if="book.option == 'Sell'"
+                  ></i>
+                  <i
+                    class="fas fa-handshake-alt"
+                    v-if="book.option == 'Exchange'"
+                  ></i>
                   {{ book.option }}
                 </div>
                 <div>
@@ -55,7 +66,6 @@
     </section>
     <div class="pageButton container text-center">
       <button class="btn btn-success">Next></button>
-      <i class="fa-solid fa-right-from-bracket" @click="logout"></i>
     </div>
   </div>
 </template>
@@ -91,6 +101,12 @@
   flex-direction: row;
   align-items: center;
   border: 1px solid grey;
+  box-shadow: 1px -1px 9px -3px #000000;
+  transition: 600ms;
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 }
 
 .bookImage {
