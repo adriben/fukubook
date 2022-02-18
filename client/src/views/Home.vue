@@ -10,6 +10,7 @@
     </section>
     <section class="container text-center mt-5">
       <h2>Latest arrival</h2>
+
       <ul>
         <li v-for="book in this.books.slice().reverse()" :key="book.title">
           <div>
@@ -44,6 +45,9 @@
                   {{ book.option }}
                 </div>
                 <div>
+                  <flag iso="fr" v-if="book.lang == 'French'" />
+                  <flag iso="us" v-if="book.lang == 'English'" />
+                  <flag iso="jp" v-if="book.lang == 'Japanese'" />
                   {{ book.lang }}
                 </div>
               </div>
@@ -69,6 +73,45 @@
     </div>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import TheHeader from "@/components/TheHeader.vue";
+
+export default {
+  name: "Home",
+  components: {
+    TheHeader,
+  },
+  data() {
+    return {
+      books: [],
+      currentPage: 1,
+      bookPerPage: 2,
+    };
+  },
+  mounted: async function () {
+    this.getBooks();
+  },
+  computed: {
+    // paginatedBook() {
+    //   let page = 1;
+    //   return [].concat.apply([], this.books.map)
+    // }
+  },
+  methods: {
+    getBooks: async function () {
+      await fetch("http://localhost:5000/api/books")
+        .then((responsehttp) => {
+          return responsehttp.json();
+        })
+        .then((data) => {
+          this.books = data;
+        });
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 .hero {
@@ -117,42 +160,3 @@
   margin-bottom: -15rem;
 }
 </style>
-
-<script>
-// @ is an alias to /src
-import TheHeader from "@/components/TheHeader.vue";
-
-export default {
-  name: "Home",
-  components: {
-    TheHeader,
-  },
-  data() {
-    return {
-      books: [],
-      currentPage: 1,
-      bookPerPage: 2,
-    };
-  },
-  mounted: async function () {
-    this.getBooks();
-  },
-  computed: {
-    // paginatedBook() {
-    //   let page = 1;
-    //   return [].concat.apply([], this.books.map)
-    // }
-  },
-  methods: {
-    getBooks: async function () {
-      await fetch("http://localhost:5000/api/books")
-        .then((responsehttp) => {
-          return responsehttp.json();
-        })
-        .then((data) => {
-          this.books = data;
-        });
-    },
-  },
-};
-</script>

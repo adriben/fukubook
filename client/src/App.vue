@@ -37,9 +37,7 @@ export default {
   border-radius: 20px;
 }
 
-li{
+li {
   list-style: none;
 }
-
-
 </style>
