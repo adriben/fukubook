@@ -45,9 +45,9 @@
                   {{ book.option }}
                 </div>
                 <div>
-                  <flag iso="fr" v-if="book.lang == 'French'" />
-                  <flag iso="us" v-if="book.lang == 'English'" />
-                  <flag iso="jp" v-if="book.lang == 'Japanese'" />
+                  <flag iso="fr" v-if="book.lang == 'French'" class="flag" />
+                  <flag iso="us" v-if="book.lang == 'English'" class="flag" />
+                  <flag iso="jp" v-if="book.lang == 'Japanese'" class="flag" />
                   {{ book.lang }}
                 </div>
               </div>
@@ -158,5 +158,11 @@ export default {
 
 .modify {
   margin-bottom: -15rem;
+}
+.flag {
+  border-radius: 15px;
+  border: 1px solid rgb(141, 141, 145);
+  font-size: 1.3rem;
+  padding: 0px 10px;
 }
 </style>
