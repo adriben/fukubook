@@ -10,8 +10,9 @@
     </section>
     <section class="container text-center mt-5">
       <h2>Latest arrival</h2>
+      <i class="fas fa-book-reader bookIcon"></i>
 
-      <ul>
+      <ul v-if="books" class="mt-5">
         <li v-for="book in this.books.slice().reverse()" :key="book.title">
           <div>
             <div class="card mt-3 container mb-3">
@@ -29,26 +30,32 @@
                 <p class="card-text mt-5">
                   {{ book.description }}
                 </p>
-                <div>
-                  <i
-                    class="fa-solid fa-gift fas"
-                    v-if="book.option == 'Give'"
-                  ></i>
-                  <i
-                    class="fa-solid fa-comment-dollar fas"
-                    v-if="book.option == 'Sell'"
-                  ></i>
-                  <i
-                    class="fas fa-handshake-alt"
-                    v-if="book.option == 'Exchange'"
-                  ></i>
-                  {{ book.option }}
-                </div>
-                <div>
-                  <flag iso="fr" v-if="book.lang == 'French'" class="flag" />
-                  <flag iso="us" v-if="book.lang == 'English'" class="flag" />
-                  <flag iso="jp" v-if="book.lang == 'Japanese'" class="flag" />
-                  {{ book.lang }}
+                <div class="align">
+                  <div>
+                    <i
+                      class="fa-solid fa-gift fas gift"
+                      v-if="book.option == 'Give'"
+                    ></i>
+                    <i
+                      class="fa-solid fa-comment-dollar fas dollar"
+                      v-if="book.option == 'Sell'"
+                    ></i>
+                    <i
+                      class="fas fa-handshake-alt"
+                      v-if="book.option == 'Exchange'"
+                    ></i>
+                    {{ book.option }}
+                  </div>
+                  <div>
+                    <flag iso="fr" v-if="book.lang == 'French'" class="flag" />
+                    <flag iso="us" v-if="book.lang == 'English'" class="flag" />
+                    <flag
+                      iso="jp"
+                      v-if="book.lang == 'Japanese'"
+                      class="flag"
+                    />
+                    {{ book.lang }}
+                  </div>
                 </div>
               </div>
               <div>
@@ -67,6 +74,7 @@
           </div>
         </li>
       </ul>
+      <h3 v-else class="mt-5 mb-5">There is no book in the database</h3>
     </section>
     <div class="pageButton container text-center">
       <button class="btn btn-success">Next></button>
@@ -138,7 +146,9 @@ export default {
     }
   }
 }
-
+.bookIcon {
+  font-size: 2rem;
+}
 .card {
   display: flex;
   flex-direction: row;
@@ -149,6 +159,17 @@ export default {
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
+  }
+  .gift {
+    color: rgb(250, 83, 208);
+  }
+  .dollar {
+    color: green;
+  }
+  .align {
+    display: flex;
+    flex-direction: row;
+    padding: 0 5rem;
   }
 }
 
