@@ -32,6 +32,10 @@
           id="description"
           required
         />
+        <div class="photo">
+          <p>Add your photo</p>
+          <input type="file" />
+        </div>
         <div class="container text-center radio">
           <p>Please select your option</p>
           <input
