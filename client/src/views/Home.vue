@@ -154,10 +154,11 @@ export default {
   flex-direction: row;
   align-items: center;
   border: 1px solid grey;
-  box-shadow: 1px -1px 9px -3px #000000;
+
   transition: 600ms;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+    box-shadow: 1px -1px 9px -3px #000000;
     cursor: pointer;
   }
   .gift {

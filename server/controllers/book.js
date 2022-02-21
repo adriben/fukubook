@@ -32,6 +32,14 @@ exports.getOneBook = (req, res, next) => {
     .catch((err) => res.status(400).json({ err }));
 };
 
+exports.updateBook = (req, res, next) => {
+  Book.updateOne({ _id: req.params.id })
+    .then((book) => {
+      res.status(200).json({ message: "Book has been updated" });
+    })
+    .catch((err) => res.status(400).json({ err }));
+};
+
 exports.deleteBook = (req, res, next) => {
   Book.deleteOne({ _id: req.params.id })
     .then(() => res.status(200).json({ message: "book successfully deleted" }))
