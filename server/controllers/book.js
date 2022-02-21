@@ -33,7 +33,9 @@ exports.getOneBook = (req, res, next) => {
 };
 
 exports.updateBook = (req, res, next) => {
-  Book.updateOne({ _id: req.params.id })
+  let modifiedBook = req.body.data;
+  console.log(req.body);
+  Book.updateOne({ _id: req.params.id }, { modifiedBook })
     .then((book) => {
       res.status(200).json({ message: "Book has been updated" });
     })

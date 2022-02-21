@@ -7,18 +7,18 @@
         <label for="title">Book's title</label>
         <input
           type="text"
-          placeholder="Title"
           name="title"
           id="title"
+          class="title"
           :value="book.title"
           required
         />
         <label for="author">Book's author</label>
         <input
           type="text"
-          placeholder="author"
           :value="book.author"
           name="author"
+          class="author"
           id="author"
           required
         />
@@ -26,9 +26,9 @@
         <textarea
           rows="7"
           cols="45"
-          placeholder="description"
           :value="book.description"
           name="description"
+          class="description"
           id="description"
           required
         />
@@ -72,7 +72,9 @@
           <option value="Other">Other</option>
         </select>
 
-        <button class="btn btn-success mt-2">Add this book</button>
+        <button class="btn btn-success mt-2" @click="updateBook">
+          Update this book
+        </button>
         <br />
         <button class="btn btn-danger mt-2" @click="deleteBook">Delete</button>
       </form>
@@ -91,6 +93,12 @@ export default {
   data() {
     return {
       book: {},
+      // title: document.querySelector(".title").value,
+      // author: document.querySelector(".author").value,
+      // description: document.querySelector(".description").value,
+      option: this.option,
+      userId: this.userId,
+      lang: this.lang,
     };
   },
   mounted: async function () {
@@ -118,6 +126,27 @@ export default {
         `http://localhost:5000/api/books/${this.$route.params.bookId}`,
         {
           method: "DELETE",
+        }
+      ).then(this.$router.push("/"));
+    },
+    updateBook: async function (e) {
+      e.preventDefault();
+      let data = {
+        // title: document.querySelector(".title").value,
+        // author: document.querySelector(".author").value,
+        // description: document.querySelector(".description").value,
+        option: this.option,
+        userId: this.userId,
+        lang: this.lang,
+      };
+      return fetch(
+        `http://localhost:5000/api/books/${this.$route.params.bookId}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       ).then(this.$router.push("/"));
     },
