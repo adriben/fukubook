@@ -41,7 +41,7 @@
                       v-if="book.option == 'Sell'"
                     ></i>
                     <i
-                      class="fas fa-handshake-alt"
+                      class="fas fa-hands-helping hands"
                       v-if="book.option == 'Exchange'"
                     ></i>
                     {{ book.option }}
@@ -54,6 +54,7 @@
                       v-if="book.lang == 'Japanese'"
                       class="flag"
                     />
+                    <flag iso="es" v-if="book.lang == 'Spanish'" class="flag" />
                     {{ book.lang }}
                   </div>
                 </div>
@@ -186,5 +187,9 @@ export default {
   border: 1px solid rgb(141, 141, 145);
   font-size: 1.3rem;
   padding: 0px 10px;
+}
+
+.hands {
+  color: rgba(255, 166, 0, 0.883);
 }
 </style>
