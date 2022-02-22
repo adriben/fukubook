@@ -10,13 +10,13 @@
           name="title"
           id="title"
           class="title"
-          :value="book.title"
+          v-model="this.title"
           required
         />
         <label for="author">Book's author</label>
         <input
           type="text"
-          :value="book.author"
+          v-model="this.author"
           name="author"
           class="author"
           id="author"
@@ -26,7 +26,7 @@
         <textarea
           rows="7"
           cols="45"
-          :value="book.description"
+          v-model="this.description"
           name="description"
           class="description"
           id="description"
@@ -93,12 +93,12 @@ export default {
   data() {
     return {
       book: {},
-      // title: document.querySelector(".title").value,
-      // author: document.querySelector(".author").value,
-      // description: document.querySelector(".description").value,
-      option: this.option,
-      userId: this.userId,
-      lang: this.lang,
+      title: "",
+      author: "",
+      description: "",
+      option: "",
+      userId: "",
+      lang: "",
     };
   },
   mounted: async function () {
@@ -114,7 +114,9 @@ export default {
         })
         .then((data) => {
           this.book = data;
-          console.log(this.book.title);
+          this.title = this.book.title;
+          this.author = this.book.author;
+          this.description = this.book.description;
         })
         .catch((err) => {
           console.log(err);
@@ -132,9 +134,9 @@ export default {
     updateBook: async function (e) {
       e.preventDefault();
       let data = {
-        // title: document.querySelector(".title").value,
-        // author: document.querySelector(".author").value,
-        // description: document.querySelector(".description").value,
+        title: this.title,
+        author: this.author,
+        description: this.description,
         option: this.option,
         userId: this.userId,
         lang: this.lang,
@@ -151,6 +153,16 @@ export default {
       ).then(this.$router.push("/"));
     },
   },
+  // whatch: {
+  //   contact: {
+  //     immediate: true,
+  //     handler(val) {
+  //       this.title = val.title;
+  //       this.author = val.author;
+  //       this.description = val.description;
+  //     },
+  //   },
+  // },
 };
 </script>
 <style lang="scss">
