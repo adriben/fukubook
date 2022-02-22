@@ -56,11 +56,6 @@
 <script>
 export default {
   name: "TheHeader",
-  data() {
-    return {
-      eng: true,
-    };
-  },
   methods: {
     logout(e) {
       e.preventDefault();
