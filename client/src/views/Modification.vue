@@ -141,6 +141,7 @@ export default {
         userId: this.userId,
         lang: this.lang,
       };
+      console.log(data);
       return fetch(
         `http://localhost:5000/api/books/${this.$route.params.bookId}`,
         {
