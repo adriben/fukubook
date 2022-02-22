@@ -39,28 +39,28 @@
             type="radio"
             id="give"
             name="option"
-            value="Give"
             v-model="option"
+            value="Give"
           />
           <label for="give" class="pr-2">Give</label>
           <input
             type="radio"
             id="exchange"
             name="option"
-            value="Exchange"
             v-model="option"
+            value="Exchange"
           />
-          <label for="Exchange" class="pr-2">Exchange</label>
+          <label for="exchange" class="pr-2">Exchange</label>
           <input
             type="radio"
             id="sell"
             name="option"
-            value="Sell"
             v-model="option"
+            value="Sell"
           />
           <label for="sell" class="pr-2">Sell</label>
         </div>
-        <label for="pet-select">Choose a language:</label>
+        <label for="lang-select">Choose a language:</label>
 
         <select name="lang" id="lang-select" v-model="lang">
           <option value="">--Please choose a language--</option>
@@ -113,10 +113,13 @@ export default {
           return responsehttp.json();
         })
         .then((data) => {
+          console.log(data);
           this.book = data;
           this.title = this.book.title;
           this.author = this.book.author;
           this.description = this.book.description;
+          this.lang = this.book.lang;
+          this.option = this.book.option;
         })
         .catch((err) => {
           console.log(err);
@@ -133,6 +136,7 @@ export default {
     },
     updateBook: async function (e) {
       e.preventDefault();
+
       let data = {
         title: this.title,
         author: this.author,

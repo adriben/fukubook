@@ -63,7 +63,7 @@
           />
           <label for="sell" class="pr-2">Sell</label>
         </div>
-        <label for="pet-select">Choose a language:</label>
+        <label for="lang-select">Choose a language:</label>
 
         <select name="lang" id="lang-select" v-model="lang">
           <option value="">--Please choose a language--</option>
