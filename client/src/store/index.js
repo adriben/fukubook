@@ -6,43 +6,41 @@ const instance = axios.create({
   baseUrl: "http://localhost:5000/api",
 });
 
-// let user = JSON.parse(localStorage.getItem('user'));
-// if (!user) {
-//   //if there is nothing in local storage then the default userID is -1
-//   user = {
-//     userId: -1,
-//     token: "",
-//   };
-// } else {
-//   try {
-//     instance.defaults.headers.common["Authorization"] = user.token;
-//   } catch (ex) {
-//     user = {
-//       userId: -1,
-//       token: "",
-//     };
-//   }
-// }
+let user = JSON.parse(localStorage.getItem("user"));
+if (!user) {
+  //if there is nothing in local storage then the default userID is -1
+  user = {
+    userId: -1,
+    token: "",
+  };
+} else {
+  try {
+    // instance.defaults.headers.common["Authorization"] = user.token;
+  } catch (ex) {
+    user = {
+      userId: -1,
+      token: "",
+    };
+  }
+}
 
 export default createStore({
   state: {
     status: "",
     user: {
-      userId: -1,
-      username: "",
-      token: "",
+      userId: user.userId ? user.userId : -1,
+      username: user.username ? user.username : "",
+      token: user.token ? user.token : "",
     },
   },
   mutations: {
     logUser: async function (state, user) {
       // instance.defaults.headers.common["Authorization"] = user.token;
-      // localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("user", JSON.stringify(user));
 
       state.user.userId = user.userId;
       state.user.username = user.username;
       state.user.token = user.token;
-
-      console.log(state.user);
     },
     logout: async function (state) {
       state.user.userId = -1;

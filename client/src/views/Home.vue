@@ -184,7 +184,6 @@ export default {
 }
 .flag {
   border-radius: 15px;
-  border: 1px solid rgb(141, 141, 145);
   font-size: 1.3rem;
   padding: 0px 10px;
 }
