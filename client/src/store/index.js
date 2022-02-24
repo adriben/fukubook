@@ -78,6 +78,7 @@ export default createStore({
     },
     logout: async ({ commit }) => {
       commit("logout");
+      localStorage.clear();
       router.push("/");
     },
   },
