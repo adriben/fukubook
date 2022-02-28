@@ -35,7 +35,10 @@
         <div class="photo mt-2">
           <p>Add your photo</p>
           <input type="file" id="file-upload" @change="onFileChange" />
-          <label accept="image/*" for="file-upload" class="custom-file-upload"
+          <label
+            accept="image/*"
+            for="file-upload"
+            class="custom-file-upload btn btn-primary"
             ><i class="fas fa-file-image"></i> Upload here</label
           >
           <div v-if="this.url">
@@ -112,14 +115,15 @@ export default {
   methods: {
     addBook: async function (event) {
       event.preventDefault();
-      console.log(this.option);
+      const imageFile = document.querySelector("input[type=file]").files[0];
       this.$store.dispatch("createBook", {
-        title: this.title,
-        author: this.author,
-        description: this.description,
-        option: this.option,
-        userId: this.userId,
-        lang: this.lang,
+        title: formData.append("title", this.title),
+        author: formData.append("author", this.author),
+        description: formData.append("description", this.description),
+        option: formData.append("option", this.option),
+        userId: formData.append("userId", this.userId),
+        lang: formData.append("lang", this.lang),
+        img: imageFile,
       });
     },
     onFileChange(e) {
@@ -148,5 +152,10 @@ input[type="file"] {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+}
+
+#imageUploaded {
+  max-width: 300px;
+  max-height: 300px;
 }
 </style>
