@@ -72,7 +72,25 @@ export default createStore({
     },
     createBook: async ({ commit }, bookInfos) => {
       commit;
-      instance.post("http://localhost:5000/api/books", bookInfos).then(() => {
+      const formData = new FormData();
+      let title = bookInfos.title;
+      let author = bookInfos.author;
+      let description = bookInfos.description;
+      let lang = bookInfos.lang;
+      let option = bookInfos.option;
+      let img = bookInfos.img;
+      let userId = bookInfos.userId;
+
+      formData.append("title", title);
+      formData.append("author", author);
+      formData.append("description", description);
+      formData.append("lang", lang);
+      formData.append("option", option);
+      formData.append("img", img);
+      formData.append("userId", userId);
+
+      console.log(formData);
+      instance.post("http://localhost:5000/api/books", formData).then(() => {
         router.push("/");
       });
     },

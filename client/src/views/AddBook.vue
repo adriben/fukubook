@@ -116,14 +116,15 @@ export default {
     addBook: async function (event) {
       event.preventDefault();
       const imageFile = document.querySelector("input[type=file]").files[0];
+
       this.$store.dispatch("createBook", {
-        title: formData.append("title", this.title),
-        author: formData.append("author", this.author),
-        description: formData.append("description", this.description),
-        option: formData.append("option", this.option),
-        userId: formData.append("userId", this.userId),
-        lang: formData.append("lang", this.lang),
-        img: imageFile,
+        title: this.title,
+        author: this.author,
+        description: this.description,
+        option: this.option,
+        userId: this.userId,
+        lang: this.lang,
+        img: imageFile ? imageFile : null,
       });
     },
     onFileChange(e) {
