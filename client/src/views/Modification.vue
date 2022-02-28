@@ -104,6 +104,7 @@ export default {
   mounted: async function () {
     this.getBookInfo();
   },
+
   methods: {
     getBookInfo: async function () {
       return fetch(

@@ -42,6 +42,11 @@
                   <button class="btn btn-danger">+ Add your book</button>
                 </router-link>
               </li>
+              <li>
+                <router-link to="/">
+                  <i class="fas fa-user-cog"></i>
+                </router-link>
+              </li>
               <li class="text-center">
                 <i class="fas fa-power-off mt-2 ml-3" @click="logout"></i>
               </li>

@@ -32,11 +32,17 @@
           id="description"
           required
         />
-        <div class="photo">
+        <div class="photo mt-2">
           <p>Add your photo</p>
-          <input type="file" />
+          <input type="file" id="file-upload" @change="onFileChange" />
+          <label accept="image/*" for="file-upload" class="custom-file-upload"
+            ><i class="fas fa-file-image"></i> Upload here</label
+          >
+          <div v-if="this.url">
+            <img :src="url" alt="uploaded image" id="imageUploaded" />
+          </div>
         </div>
-        <div class="container text-center radio">
+        <div class="container text-center radio mt-4">
           <p>Please select your option</p>
           <input
             type="radio"
@@ -99,8 +105,10 @@ export default {
       option: "",
       userId: this.$store.state.user.userId,
       lang: "",
+      url: null,
     };
   },
+
   methods: {
     addBook: async function (event) {
       event.preventDefault();
@@ -114,6 +122,10 @@ export default {
         lang: this.lang,
       });
     },
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
   },
 };
 </script>
@@ -123,5 +135,18 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+input[type="text"] {
+  width: 22rem;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 </style>
