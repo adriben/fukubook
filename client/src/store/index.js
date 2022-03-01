@@ -89,9 +89,13 @@ export default createStore({
       formData.append("img", img);
       formData.append("userId", userId);
 
-      console.log(formData);
+      for (var value of formData.values()) {
+        console.log(value);
+      }
       await instance
-        .post("http://localhost:5000/api/books", formData)
+        .post("http://localhost:5000/api/books", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
         .then(() => {
           router.push("/");
         });
