@@ -9,6 +9,7 @@ const bookSchema = mongoose.Schema({
   description: { type: String, require: true },
   option: { type: String, require: true },
   lang: { type: String, require: true },
+  img: { type: String, require: true },
 });
 
 module.exports = mongoose.model("Book", bookSchema);

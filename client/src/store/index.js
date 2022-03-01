@@ -90,9 +90,11 @@ export default createStore({
       formData.append("userId", userId);
 
       console.log(formData);
-      instance.post("http://localhost:5000/api/books", formData).then(() => {
-        router.push("/");
-      });
+      await instance
+        .post("http://localhost:5000/api/books", formData)
+        .then(() => {
+          router.push("/");
+        });
     },
     logout: async ({ commit }) => {
       commit("logout");

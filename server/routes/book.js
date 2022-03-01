@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express();
 const bookCtrl = require("../controllers/book");
+// const multer = require("../middleware/multer-config");
 
 router.get("/", bookCtrl.getAllBooks);
 router.post("/", bookCtrl.createBook);

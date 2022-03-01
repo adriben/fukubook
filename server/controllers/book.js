@@ -12,6 +12,7 @@ exports.createBook = (req, res, next) => {
     description: req.body.description,
     option: req.body.option,
     lang: req.body.lang,
+    img: req.body.img,
   });
   book
     .save()
