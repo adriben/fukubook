@@ -21,6 +21,7 @@
                 alt="book image"
                 class="bookImage"
               />
+              <img :src="book.img" alt="book image" />
 
               <div class="card-body mt-0">
                 <div class="card-title">
