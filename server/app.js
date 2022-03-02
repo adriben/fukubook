@@ -10,7 +10,11 @@ const app = express();
 
 dotenv.config();
 
-app.use(helmet());
+// app.use(
+//   helmet({
+//     crossOriginEmbedderPolicy: false,
+//   })
+// );
 app.use(cors());
 
 app.use(express.json());

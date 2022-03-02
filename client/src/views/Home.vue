@@ -17,11 +17,17 @@
           <div>
             <div class="card mt-3 container mb-3">
               <img
+                :src="book.img"
+                alt="book image"
+                class="imageBook"
+                v-if="book.img"
+              />
+              <img
                 src="../assets/noImage.png"
                 alt="book image"
                 class="bookImage"
+                v-else
               />
-              <img :src="book.img" alt="book image" />
 
               <div class="card-body mt-0">
                 <div class="card-title">
@@ -177,6 +183,9 @@ export default {
 }
 
 .bookImage {
+  height: 300px;
+}
+.imageBook {
   height: 300px;
 }
 
