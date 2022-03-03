@@ -12,74 +12,91 @@
       <h2>Latest arrival</h2>
       <i class="fas fa-book-reader bookIcon"></i>
 
-      <ul v-if="books" class="mt-5">
+      <ul v-if="books" class="mt-5 bookList">
         <li v-for="book in this.books.slice().reverse()" :key="book.title">
-          <div>
-            <div class="card mt-3 container mb-3">
-              <img
-                :src="book.img"
-                alt="book image"
-                class="imageBook"
-                v-if="book.img"
-              />
-              <img
-                src="../assets/noImage.png"
-                alt="book image"
-                class="bookImage"
-                v-else
-              />
+          <router-link
+            :to="{ name: 'BookDetails', params: { bookId: book._id } }"
+          >
+            <div>
+              <div class="card mt-3 container mb-3">
+                <img
+                  :src="book.img"
+                  alt="book image"
+                  class="imageBook"
+                  v-if="book.img"
+                />
+                <img
+                  src="../assets/noImage.png"
+                  alt="book image"
+                  class="bookImage"
+                  v-else
+                />
 
-              <div class="card-body mt-0">
-                <div class="card-title">
-                  <h3>{{ book.title }}</h3>
-                  <h4>( {{ book.author }})</h4>
-                </div>
-                <p class="card-text mt-5">
-                  {{ book.description }}
-                </p>
-                <div class="align">
-                  <div>
-                    <i
-                      class="fa-solid fa-gift fas gift"
-                      v-if="book.option == 'Give'"
-                    ></i>
-                    <i
-                      class="fa-solid fa-comment-dollar fas dollar"
-                      v-if="book.option == 'Sell'"
-                    ></i>
-                    <i
-                      class="fas fa-hands-helping hands"
-                      v-if="book.option == 'Exchange'"
-                    ></i>
-                    {{ book.option }}
+                <div class="card-body mt-0">
+                  <div class="card-title">
+                    <h3>{{ book.title }}</h3>
+                    <h4>( {{ book.author }})</h4>
                   </div>
-                  <div>
-                    <flag iso="fr" v-if="book.lang == 'French'" class="flag" />
-                    <flag iso="us" v-if="book.lang == 'English'" class="flag" />
-                    <flag
-                      iso="jp"
-                      v-if="book.lang == 'Japanese'"
-                      class="flag"
-                    />
-                    <flag iso="es" v-if="book.lang == 'Spanish'" class="flag" />
-                    {{ book.lang }}
+                  <p class="card-text mt-5">
+                    {{ book.description }}
+                  </p>
+                  <div class="align">
+                    <div>
+                      <i
+                        class="fa-solid fa-gift fas gift"
+                        v-if="book.option == 'Give'"
+                      ></i>
+                      <i
+                        class="fa-solid fa-comment-dollar fas dollar"
+                        v-if="book.option == 'Sell'"
+                      ></i>
+                      <i
+                        class="fas fa-hands-helping hands"
+                        v-if="book.option == 'Exchange'"
+                      ></i>
+                      {{ book.option }}
+                    </div>
+                    <div>
+                      <flag
+                        iso="fr"
+                        v-if="book.lang == 'French'"
+                        class="flag"
+                      />
+                      <flag
+                        iso="us"
+                        v-if="book.lang == 'English'"
+                        class="flag"
+                      />
+                      <flag
+                        iso="jp"
+                        v-if="book.lang == 'Japanese'"
+                        class="flag"
+                      />
+                      <flag
+                        iso="es"
+                        v-if="book.lang == 'Spanish'"
+                        class="flag"
+                      />
+                      {{ book.lang }}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <router-link
-                  :to="{ name: 'Modification', params: { bookId: book._id } }"
-                >
-                  <button
-                    class="btn btn-primary modify"
-                    v-if="this.$store.state.user.userId === book.userId"
+
+                <div>
+                  <router-link
+                    :to="{ name: 'Modification', params: { bookId: book._id } }"
                   >
-                    Update
-                  </button>
-                </router-link>
+                    <button
+                      class="btn btn-primary modify"
+                      v-if="this.$store.state.user.userId === book.userId"
+                    >
+                      Update
+                    </button>
+                  </router-link>
+                </div>
               </div>
             </div>
-          </div>
+          </router-link>
         </li>
       </ul>
       <h3 v-else class="mt-5 mb-5">There is no book in the database</h3>
@@ -200,5 +217,15 @@ export default {
 
 .hands {
   color: rgba(255, 166, 0, 0.883);
+}
+
+.bookList {
+  a {
+    text-decoration: none;
+    color: #000000;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 </style>
