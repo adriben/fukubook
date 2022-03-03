@@ -103,6 +103,7 @@ export default {
   },
   mounted: async function () {
     this.getBookInfo();
+    // module.exports = this.getBookInfo();
   },
 
   methods: {
