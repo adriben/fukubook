@@ -204,6 +204,8 @@ export default {
 }
 .imageBook {
   height: 300px;
+  max-width: 300px;
+  object-fit: cover;
 }
 
 .modify {
